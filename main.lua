@@ -42,7 +42,7 @@ end
 function love.draw()
   if gameover then
     love.graphics.print("Game Over", 150,280)
-    love.graphics.print(" "points.." points", 150, 300)
+    love.graphics.print("points "..points, 100, 10)
     
   else
     love.graphics.print("lives "..lives, 10, 10)

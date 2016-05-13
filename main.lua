@@ -42,8 +42,9 @@ end
 function love.draw()
   if gameover then
     love.graphics.print("Game Over", 150,280)
-    love.graphics.print("points "..points, 100, 10)
-    
+    love.graphics.print(points.." points", 150, 300)
+  elseif points == 100 then
+    love.graphics.print("You Win!", 150,280)
   else
     love.graphics.print("lives "..lives, 10, 10)
     love.graphics.print("points "..points, 100, 10)
@@ -63,46 +64,48 @@ function love.draw()
 end
 
 function love.update()
-  if time > 0 then time = time - 1 end
-  if love.keyboard.isDown("left") then
-    dx = dx - speed/100;
-  end
-  if love.keyboard.isDown("right") then
-    dx = dx + speed/100;
-  end
-  if love.keyboard.isDown("up") then
-    dy = dy - speed/100;
-  end
-  if love.keyboard.isDown("down") then
-    dy = dy + speed/100;
-  end
-  local i = 1
-  while i <= 100 do
-    if (squares[i].move[1] + 2.5 - dx - 180)^2 + (squares[i].move[2] + 2.5 - dy - 320)^2 <= (atack/4 + 3)^2 then
-      if squares[i].alive and time == 0 then
-        lives = lives - 1
-        time = 200
-        if lives == 0 then gameover = true end
-        i = 100 
-      end
+  if  not gameover then
+    if time > 0 then time = time - 1 end
+    if love.keyboard.isDown("left") then
+      dx = dx - speed/100;
     end
-    i = i + 1;
-  end
-  if love.keyboard.isDown("space") then
-    if atack < 100 then
-      atack = atack + atackspeed/100;
+    if love.keyboard.isDown("right") then
+      dx = dx + speed/100;
     end
-  else
-    if not (atack==0) then
-      i = 1
-      while i <= 100 do
-        if (squares[i].move[1] + 2.5 - dx - 180)^2 + (squares[i].move[2] + 2.5 - dy - 320)^2 <= (atack + 5)^2 then
-          if squares[i].alive then points = points + 1 end
-          squares[i].alive = false
+    if love.keyboard.isDown("up") then
+      dy = dy - speed/100;
+    end
+    if love.keyboard.isDown("down") then
+      dy = dy + speed/100;
+    end
+    local i = 1
+    while i <= 100 do
+      if (squares[i].move[1] + 2.5 - dx - 180)^2 + (squares[i].move[2] + 2.5 - dy - 320)^2 <= (atack/4 + 3)^2 then
+        if squares[i].alive and time == 0 then
+          lives = lives - 1
+          time = 200
+          if lives == 0 then gameover = true end
+          i = 100 
         end
-        i = i + 1;
       end
-      atack = 0;
+      i = i + 1;
+    end
+    if love.keyboard.isDown("space") then
+      if atack < 100 then
+        atack = atack + atackspeed/100;
+      end
+    else
+      if not (atack==0) then
+        i = 1
+        while i <= 100 do
+          if (squares[i].move[1] + 2.5 - dx - 180)^2 + (squares[i].move[2] + 2.5 - dy - 320)^2 <= (atack + 5)^2 then
+            if squares[i].alive then points = points + 1 end
+            squares[i].alive = false
+          end
+          i = i + 1;
+        end
+        atack = 0;
+      end
     end
   end
 end

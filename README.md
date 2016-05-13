@@ -1,2 +1,2 @@
 # gameafraidofsquares
-Game - Afraid od Squares
+Game - Afraid of Squares

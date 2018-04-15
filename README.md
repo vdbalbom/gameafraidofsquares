@@ -6,7 +6,7 @@
 #### Install Löve
 ```sudo apt-get install love```
 #### Clone this repo
-```git clone https://github.com/vdbalbom/gamemaker.git```
+```git clone https://github.com/vdbalbom/gameafraidofsquares.git```
 #### Run
 ```love gameafraidofsquares```
 
@@ -16,7 +16,7 @@
 #### Install Löve
 ```brew cask install love```
 #### Clone this repo
-```git clone https://github.com/vdbalbom/gamemaker.git```
+```git clone https://github.com/vdbalbom/gameafraidofsquares.git```
 #### Run
 ```open -n -a love "gameafraidofsquares"```
 

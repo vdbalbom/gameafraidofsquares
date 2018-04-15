@@ -12,7 +12,7 @@ local maxatack = 100
 -- variables
 local position
 local squares
-local atack 
+local atack
 local gameover
 local win
 local lives
@@ -46,7 +46,7 @@ function extralives()
 end
 
 function startgame()
-  level = 10
+  level = 1
   lives = maxlives
   captured = 0
   score = 0
@@ -87,7 +87,7 @@ function calcmove(i,j)
   if squares[j].helprandom[i] == 0 then
       squares[j].random[i] = love.math.random(2)
       squares[j].helprandom[i] = 50
-    else 
+    else
       squares[j].helprandom[i] = squares[j].helprandom[i] - 1
     end
     if squares[j].random[i] == 2 then squares[j].random[i] = -1 end
@@ -152,7 +152,13 @@ function squaresdraw()
 end
 
 function updatewin()
-   if captured == amount() then win = true end
+   if captured == amount() then
+     if level == 10 then
+       win = true
+     else
+       nextlevel()
+     end
+   end
 end
 
 function updategameover()
@@ -167,7 +173,7 @@ function moveright()
   position.dx = position.dx + speed;
 end
 
-function moveleft() 
+function moveleft()
   position.dx = position.dx - speed;
 end
 
@@ -192,22 +198,22 @@ function updatemove()
   if love.keyboard.isDown("down") then
     movedown()
   end
-  if position.dx - radatack() < 0 then 
-    position.dx = radatack() 
+  if position.dx - radatack() < 0 then
+    position.dx = radatack()
   end
-  if position.dx + radatack() > resolution.width then 
-    position.dx = resolution.width - radatack() 
+  if position.dx + radatack() > resolution.width then
+    position.dx = resolution.width - radatack()
   end
-  if position.dy - radatack() < 0 then 
-    position.dy = radatack() 
+  if position.dy - radatack() < 0 then
+    position.dy = radatack()
     end
-  if position.dy + radatack() > resolution.height then 
-    position.dy = resolution.height - radatack() 
+  if position.dy + radatack() > resolution.height then
+    position.dy = resolution.height - radatack()
   end
 end
 
 function updateatack()
-  if love.keyboard.isDown("space") then
+  if love.keyboard.isDown("space") or love.keyboard.isDown(" ") then
       if atack < maxatack then
         atack = atack + atackspeed();
       end
@@ -217,8 +223,8 @@ function updateatack()
         local count = 0
         while i <= amount() do
           if (squares[i].position.dx + squarewidth/2 - position.dx)^2 + (squares[i].position.dy + squarewidth/2 - position.dy)^2 <= (radatack())^2 then
-            if squares[i].alive then 
-              captured = captured + 1 
+            if squares[i].alive then
+              captured = captured + 1
               count = count + 1
             end
             squares[i].alive = false

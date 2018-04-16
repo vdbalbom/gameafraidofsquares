@@ -1,5 +1,7 @@
 # Game - Afraid of Squares
 
+![alt text](sample.jpg)
+
 ### Linux
 #### Install Lua
 ``` sudo apt-get install lua5.3 ```

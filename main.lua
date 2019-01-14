@@ -20,6 +20,7 @@ local timeprotected
 local captured
 local level
 local score
+local levelscore
 
 function radcircle()
   return circleinitialrad + atack/4
@@ -42,7 +43,7 @@ function amount()
 end
 
 function extralives()
-  return math.modf(score/100)
+  return math.modf(levelscore/100)
 end
 
 function startgame()
@@ -50,6 +51,7 @@ function startgame()
   lives = maxlives
   captured = 0
   score = 0
+  levelscore = 0
   position = initialposition
   timeprotected = 0
   gameover = false
@@ -63,7 +65,7 @@ function nextlevel()
   level = level + 1
   lives = lives + extralives()
   captured = 0
-  score = 0
+  levelscore = 0
   position = initialposition
   timeprotected = 0
   gameover = false

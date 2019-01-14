@@ -10,10 +10,10 @@
 #### Clone this repo
 ```git clone https://github.com/vdbalbom/gameafraidofsquares.git```
 #### Run
-<p> If you are outside the folder: </p>
+##### If you are outside the folder:
 ```love gameafraidofsquares```
 
-<p> If you are inside the folder: </p>
+##### If you are inside the folder:
 ```love .```
 
 ### MacOs
@@ -24,9 +24,9 @@
 #### Clone this repo
 ```git clone https://github.com/vdbalbom/gameafraidofsquares.git```
 #### Run
-<p> If you are outside the folder: </p>
+##### If you are outside the folder:
 ```open -n -a love "gameafraidofsquares"```
-<p> If you are inside the folder: </p>
+##### If you are inside the folder:
 ```open -n -a love "."```
 
 ### Controls

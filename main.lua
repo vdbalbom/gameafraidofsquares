@@ -119,12 +119,14 @@ function gameoverdraw()
   love.graphics.setColor(255,255,255)
   love.graphics.print("Game Over", 150,280)
   love.graphics.print("score "..score, 150, 300)
+  love.graphics.print("Press 'p' to restart...", 120, 350)
 end
 
 function windraw()
   love.graphics.setColor(255,255,255)
   love.graphics.print("You Win!", 150,280)
   love.graphics.print("score "..score, 150, 300)
+  love.graphics.print("Press 'p' to contunue...", 110, 350)
 end
 
 function scoreboarddraw()
@@ -155,16 +157,24 @@ end
 
 function updatewin()
    if captured == amount() then
-     if level == 10 then
-       win = true
-     else
-       nextlevel()
-     end
+     win = true
    end
 end
 
 function updategameover()
   if lives == 0 then gameover = true end
+end
+
+function updatenextlevel()
+  if love.keyboard.isDown("p") then
+    nextlevel()
+  end
+end
+
+function updaterestart()
+  if love.keyboard.isDown("p") then
+    startgame()
+  end
 end
 
 function updatetimeprotected()
@@ -274,7 +284,11 @@ end
 function love.update()
   updatewin()
   updategameover()
-  if  not (gameover or win) then
+  if win then
+	updatenextlevel()
+  elseif gameover then
+	updaterestart()
+  else
     updatetimeprotected()
     updatemove()
     updatesquarespositions()

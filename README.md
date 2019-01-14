@@ -10,7 +10,11 @@
 #### Clone this repo
 ```git clone https://github.com/vdbalbom/gameafraidofsquares.git```
 #### Run
+<p> If you are outside the folder: </p>
 ```love gameafraidofsquares```
+
+<p> If you are inside the folder: </p>
+```love .```
 
 ### MacOs
 #### Install Lua
@@ -20,7 +24,10 @@
 #### Clone this repo
 ```git clone https://github.com/vdbalbom/gameafraidofsquares.git```
 #### Run
+<p> If you are outside the folder: </p>
 ```open -n -a love "gameafraidofsquares"```
+<p> If you are inside the folder: </p>
+```open -n -a love "."```
 
 ### Controls
 |     <b>Action</b>      | <b>Control</b> |
